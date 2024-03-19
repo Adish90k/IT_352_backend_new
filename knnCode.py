@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 import joblib
 
 application = Flask(__name__)
-CORS(application)  # Enable CORS for all routes
+CORS(application)  
 
 loaded_model = joblib.load('knn_model.pkl')
 loaded_lr_model = joblib.load('lr_model.pkl')
@@ -54,4 +54,4 @@ def predict():
     })
 
 if __name__ == '__main__':
-    application.run(debug=True, host='0.0.0.0', port=8080)
+    application.run(debug=True, host='0.0.0.0', port=5000)
