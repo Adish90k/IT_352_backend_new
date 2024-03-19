@@ -1,18 +1,20 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 import joblib
 
-application = Flask(__name__)  
+application = Flask(__name__)
+CORS(application)  # Enable CORS for all routes
 
 loaded_model = joblib.load('knn_model.pkl')
 loaded_lr_model = joblib.load('lr_model.pkl')
 loaded_ridge_model = joblib.load('ridge_model.pkl')
- 
+
 mini = [1, 40, 34605073, 34605073, 914, 914, 0, 53, 1, 0, 0]
 maxi = [97330, 150351394, 3652634665, 3652634665, 65535, 6273, 60999, 60999, 17, 192, 31]
 
- 
+
 def min_max_normalize(value, min_val, max_val):
     return (value - min_val) / (max_val - min_val)
 
